@@ -12,6 +12,9 @@ It provides functions for character checks, string manipulation, memory operatio
 
 ``
 cd my_libft
+``
+
+``
 make
 ``
 
@@ -19,21 +22,21 @@ This will compile all .c files and create the static library libft.a
 
 2. Then build the tests:
 
-``
-cd ../tests
-``
+` cd ../tests `
 
-``
-make
-``
+` make `
 
-The Makefile here will link main.o with ../my_libft/libft.a
+The Makefile here will link main.o with ` ../my_libft/libft.a `.
 
 # Library Overview
 The `libft` library includes:
 
 - **Character checks:** 
-  `ft_isalpha`, `ft_isdigit`, `ft_isalnum`, `ft_isascii`, `ft_isprint`
+`ft_isalpha` - [isalpha()](https://www.programiz.com/c-programming/library-function/ctype.h/isalpha)
+`ft_isdigit`
+`ft_isalnum`
+`ft_isascii`
+`ft_isprint` 
 
 - **String functions:** 
   `ft_strlen`, `ft_strlcpy`, `ft_strlcat`, `ft_strchr`, `ft_strrchr`, `ft_strncmp`, `ft_strnstr`, `ft_strdup`, `ft_substr`, `ft_strjoin`, `ft_strtrim`, `ft_split`, `ft_strmapi`, `ft_striteri`
