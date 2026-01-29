@@ -9,13 +9,15 @@ It provides functions for character checks, string manipulation, memory operatio
 
 ## Compilation
 1. Navigate to the library folder and build the library:
+
 ``
 cd my_libft
+
 make
 ``
 This will compile all .c files and create the static library libft.a
 
-2.Then build the tests:
+2. Then build the tests:
 ``
 cd ../tests
 make
