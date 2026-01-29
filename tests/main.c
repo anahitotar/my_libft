@@ -66,7 +66,7 @@ void    test_isdigit(void)
 
 void	test_isalnum(void)
 {
-	printf("========== IS DIGIT OR ALPHA===========\n");
+	printf("========== IS DIGIT OR ALPHA ===========\n");
         unsigned char   c;
 
         printf("char\t:\tReal\t:\tFT\n");
@@ -86,10 +86,51 @@ void	test_isalnum(void)
 	printf("\'%u\'\t:\t%d\t:\t%d\n", c, isalnum(c), (ft_isalnum(c) != 0) ? 1 : 0);
 }
 
+void	test_isascii(void)
+{
+	printf("========== IS ASCII ===========\n");
+	char   c;
+ 	
+	printf("char\t:\tReal\t:\tFT\n");
+ 	c = 0;
+	printf("\'%c\'\t:\t%d\t:\t%d\n", c, isascii(c), (ft_isascii(c) != 0) ? 1 : 0);
+	c = -34;
+	printf("\'%c\'\t:\t%d\t:\t%d\n", c, isascii(c), (ft_isascii(c) != 0) ? 1 : 0);
+	c = '~';
+	printf("\'%c\'\t:\t%d\t:\t%d\n", c, isascii(c), (ft_isascii(c) != 0) ? 1 : 0);
+	c = -128;
+	printf("\'%c\'\t:\t%d\t:\t%d\n", c, isascii(c), (ft_isascii(c) != 0) ? 1 : 0);
+	c = 'n';
+ 	printf("\'%c\'\t:\t%d\t:\t%d\n", c, isascii(c), (ft_isascii(c) != 0) ? 1 : 0);
+	c = 'A';
+	printf("\'%c\'\t:\t%d\t:\t%d\n", c, isascii(c), (ft_isascii(c) != 0) ? 1 : 0);
+}
+
+void	test_isprint(void)
+{
+	printf("========== IS PRINTABLE ===========\n");
+	char   c;
+	printf("char\t:\tReal\t:\tFT\n");
+	c = -4;
+	printf("\'%c\'\t:\t%d\t:\t%d\n", c, isprint(c), (ft_isprint(c) != 0) ? 1 : 0);
+	c = 127;
+	printf("\'%c\'\t:\t%d\t:\t%d\n", c, isprint(c), (ft_isprint(c) != 0) ? 1 : 0);
+	c = 0;
+	printf("\'%c\'\t:\t%d\t:\t%d\n", c, isprint(c), (ft_isprint(c) != 0) ? 1 : 0);
+	c = '7';
+	printf("\'%c\'\t:\t%d\t:\t%d\n", c, isprint(c), (ft_isprint(c) != 0) ? 1 : 0);
+	c = 'D';
+	printf("\'%c\'\t:\t%d\t:\t%d\n", c, isprint(c), (ft_isprint(c) != 0) ? 1 : 0);
+	c = 126;
+	printf("\'%c\'\t:\t%d\t:\t%d\n", c, isprint(c), (ft_isprint(c) != 0) ? 1 : 0);
+}
+
 int main()
 {
 	printf(    "=========== PART 1 ============\n");
 	test_isalpha();
 	test_isdigit();
 	test_isalnum();
+	test_isascii();
+	test_isprint();
 }

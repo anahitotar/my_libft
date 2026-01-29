@@ -23,12 +23,12 @@ It provides functions for character checks, string manipulation, memory operatio
 
 ` .PHONY ` is a special directive for Make. It says:
 
-* "Make these target names as dummy names, not files." *
+"Make these target names as dummy names, not files."
 
 This is  important,cause Make usually thinks a target is a file.
 For example, if we have a file called clean in a folder and we type make clean, Make might think:
 
-* "The file clean already exists, so there's nothing to do." *
+"The file clean already exists, so there's nothing to do."
 
 ## Compilation
 1. Navigate to the library folder and build the library:
@@ -37,7 +37,7 @@ For example, if we have a file called clean in a folder and we type make clean, 
 
 ` make `
 
-This will compile all * .c * files and create the static library ` libft.a `.
+This will compile all .c files and create the static library ` libft.a `.
 
 2. Then build the tests:
 
@@ -45,17 +45,17 @@ This will compile all * .c * files and create the static library ` libft.a `.
 
 ` make `
 
-The Makefile here will link * main.o * with ` ../my_libft/libft.a `.
+The Makefile here will link main.o with ` ../my_libft/libft.a `.
 
 # Library Overview
 The `libft` library includes:
 
 - **Character checks:** 
 
-* For the character classification functions (isalpha, isdigit,
-isalnum, isascii, isprint), the return value must be: *
-* • 1 if the character matches the tested class *
-* • 0 if the character does not match *
+For the character classification functions (isalpha, isdigit,
+isalnum, isascii, isprint), the return value must be:
+• 1 if the character matches the tested class
+• 0 if the character does not match
 
 `ft_isalpha` - [isalpha()](https://www.programiz.com/c-programming/library-function/ctype.h/isalpha)
 
