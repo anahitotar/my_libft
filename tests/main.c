@@ -17,7 +17,7 @@
 void	test_isalpha(void)
 {
 	printf("========== IS ALPHA ===========\n");
-	char	c;
+	unsigned char	c;
 
 	printf("char\t:\tReal\t:\tFT\n");
 	c = 'A';
@@ -42,9 +42,54 @@ void	test_isalpha(void)
 	printf("\'%u\'\t:\t%d\t:\t%d\n", c, isalpha(c), (ft_isalpha(c) != 0) ? 1 : 0);
 }
 
+void    test_isdigit(void)
+{
+        printf("========== IS DIGIT ===========\n");
+        unsigned char   c;
+
+        printf("char\t:\tReal\t:\tFT\n");
+        c = 'A';
+        printf("\'%u\'\t:\t%d\t:\t%d\n", c, isdigit(c), (ft_isdigit(c) != 0) ? 1 : 0);
+        c = 'a';
+	printf("\'%u\'\t:\t%d\t:\t%d\n", c, isdigit(c), (ft_isdigit(c) != 0) ? 1 : 0);
+	c = 15;
+	printf("\'%u\'\t:\t%d\t:\t%d\n", c, isdigit(c), (ft_isdigit(c) != 0) ? 1 : 0);
+        c = ',';
+	printf("\'%u\'\t:\t%d\t:\t%d\n", c, isdigit(c), (ft_isdigit(c) != 0) ? 1 : 0);
+        c = '9';
+	printf("\'%u\'\t:\t%d\t:\t%d\n", c, isdigit(c), (ft_isdigit(c) != 0) ? 1 : 0);
+	c = '0';
+	printf("\'%u\'\t:\t%d\t:\t%d\n", c, isdigit(c), (ft_isdigit(c) != 0) ? 1 : 0);
+	c = '4';
+	printf("\'%u\'\t:\t%d\t:\t%d\n", c, isdigit(c), (ft_isdigit(c) != 0) ? 1 : 0);
+}
+
+void	test_isalnum(void)
+{
+	printf("========== IS DIGIT OR ALPHA===========\n");
+        unsigned char   c;
+
+        printf("char\t:\tReal\t:\tFT\n");
+        c = 'A';
+        printf("\'%u\'\t:\t%d\t:\t%d\n", c, isalnum(c), (ft_isalnum(c) != 0) ? 1 : 0);
+        c = 'a';
+	printf("\'%u\'\t:\t%d\t:\t%d\n", c, isalnum(c), (ft_isalnum(c) != 0) ? 1 : 0);
+        c = '0';
+	printf("\'%u\'\t:\t%d\t:\t%d\n", c, isalnum(c), (ft_isalnum(c) != 0) ? 1 : 0);
+        c = '9';
+	printf("\'%u\'\t:\t%d\t:\t%d\n", c, isalnum(c), (ft_isalnum(c) != 0) ? 1 : 0);
+        c = '?';
+	printf("\'%u\'\t:\t%d\t:\t%d\n", c, isalnum(c), (ft_isalnum(c) != 0) ? 1 : 0);
+        c = ' ';
+	printf("\'%u\'\t:\t%d\t:\t%d\n", c, isalnum(c), (ft_isalnum(c) != 0) ? 1 : 0);
+	c = 20;
+	printf("\'%u\'\t:\t%d\t:\t%d\n", c, isalnum(c), (ft_isalnum(c) != 0) ? 1 : 0);
+}
+
 int main()
 {
 	printf(    "=========== PART 1 ============\n");
 	test_isalpha();
-
+	test_isdigit();
+	test_isalnum();
 }

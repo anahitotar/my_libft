@@ -2,7 +2,8 @@ NAME = libft.a
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 SRCS = ft_isalpha.c\
-	
+	ft_isdigit.c\
+	ft_isalnum.c\
 
 OBJS = $(SRCS:.c=.o)
 
