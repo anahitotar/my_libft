@@ -12,16 +12,19 @@ It provides functions for character checks, string manipulation, memory operatio
 
 ``
 cd my_libft
-
 make
 ``
+
 This will compile all .c files and create the static library libft.a
 
 2. Then build the tests:
+
 ``
 cd ../tests
 make
+
 ``
+
 The Makefile here will link main.o with ../my_libft/libft.a
 
 # Library Overview
