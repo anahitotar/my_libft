@@ -10,15 +10,11 @@ It provides functions for character checks, string manipulation, memory operatio
 ## Compilation
 1. Navigate to the library folder and build the library:
 
-``
-cd my_libft
-``
+` cd my_libft `
 
-``
-make
-``
+` make `
 
-This will compile all .c files and create the static library libft.a
+This will compile all .c files and create the static library ` libft.a `.
 
 2. Then build the tests:
 
@@ -33,10 +29,14 @@ The `libft` library includes:
 
 - **Character checks:** 
 `ft_isalpha` - [isalpha()](https://www.programiz.com/c-programming/library-function/ctype.h/isalpha)
-`ft_isdigit`
-`ft_isalnum`
-`ft_isascii`
-`ft_isprint` 
+
+`ft_isdigit` - [isdigit()](https://www.programiz.com/c-programming/library-function/ctype.h/isdigit)
+
+`ft_isalnum` - [isalnum()](https://www.programiz.com/c-programming/library-function/ctype.h/isalnum)
+
+`ft_isascii` - [ASCII Table](https://www.ascii-code.com)
+
+`ft_isprint` - [isprint()](https://www.programiz.com/c-programming/library-function/ctype.h/isprint)
 
 - **String functions:** 
   `ft_strlen`, `ft_strlcpy`, `ft_strlcat`, `ft_strchr`, `ft_strrchr`, `ft_strncmp`, `ft_strnstr`, `ft_strdup`, `ft_substr`, `ft_strjoin`, `ft_strtrim`, `ft_split`, `ft_strmapi`, `ft_striteri`
