@@ -21,8 +21,10 @@ This will compile all .c files and create the static library libft.a
 
 ``
 cd ../tests
-make
+``
 
+``
+make
 ``
 
 The Makefile here will link main.o with ../my_libft/libft.a
