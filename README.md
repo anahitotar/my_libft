@@ -9,17 +9,17 @@ It provides functions for character checks, string manipulation, memory operatio
 
 ## Compilation
 1. Navigate to the library folder and build the library:
-```bash
+``
 cd my_libft
 make
-```markdown
+``
 This will compile all .c files and create the static library libft.a
 
 2.Then build the tests:
-```bash
+``
 cd ../tests
 make
-```markdown
+``
 The Makefile here will link main.o with ../my_libft/libft.a
 
 # Library Overview
