@@ -9,18 +9,26 @@ It provides functions for character checks, string manipulation, memory operatio
 
 ## Makefile
 
-make        # build the project (default target)
-make all    # same as make (if defined)
-make clean  # remove object files (*.o)
-make fclean # remove object files + executable
-make re     # fclean + all (full rebuild)
+` make `        # build the project (default target)
 
-.PHONY: all clean fclean re
-.PHONY is a special directive for Make. It says:
-"Make these target names as dummy names, not files."
+` make all `    # same as make (if defined)
+
+` make clean `  # remove object files (*.o)
+
+` make fclean ` # remove object files + executable
+
+` make re `     # fclean + all (full rebuild)
+
+` .PHONY: all clean fclean re `
+
+` .PHONY ` is a special directive for Make. It says:
+
+* "Make these target names as dummy names, not files." *
+
 This is  important,cause Make usually thinks a target is a file.
 For example, if we have a file called clean in a folder and we type make clean, Make might think:
-"The file clean already exists, so there's nothing to do."
+
+* "The file clean already exists, so there's nothing to do." *
 
 ## Compilation
 1. Navigate to the library folder and build the library:
@@ -29,7 +37,7 @@ For example, if we have a file called clean in a folder and we type make clean, 
 
 ` make `
 
-This will compile all .c files and create the static library ` libft.a `.
+This will compile all * .c * files and create the static library ` libft.a `.
 
 2. Then build the tests:
 
@@ -37,12 +45,17 @@ This will compile all .c files and create the static library ` libft.a `.
 
 ` make `
 
-The Makefile here will link main.o with ` ../my_libft/libft.a `.
+The Makefile here will link * main.o * with ` ../my_libft/libft.a `.
 
 # Library Overview
 The `libft` library includes:
 
 - **Character checks:** 
+
+* For the character classification functions (isalpha, isdigit,
+isalnum, isascii, isprint), the return value must be: *
+* • 1 if the character matches the tested class *
+* • 0 if the character does not match *
 
 `ft_isalpha` - [isalpha()](https://www.programiz.com/c-programming/library-function/ctype.h/isalpha)
 
@@ -55,17 +68,70 @@ The `libft` library includes:
 `ft_isprint` - [isprint()](https://www.programiz.com/c-programming/library-function/ctype.h/isprint)
 
 - **String functions:** 
-  `ft_strlen`, `ft_strlcpy`, `ft_strlcat`, `ft_strchr`, `ft_strrchr`, `ft_strncmp`, `ft_strnstr`, `ft_strdup`, `ft_substr`, `ft_strjoin`, `ft_strtrim`, `ft_split`, `ft_strmapi`, `ft_striteri`
 
-- **Memory functions:** 
-  `ft_memset`, `ft_bzero`, `ft_memcpy`, `ft_memmove`, `ft_memchr`, `ft_memcmp`, `ft_calloc`
+`ft_strlen`
+
+`ft_strlcpy`
+
+`ft_strlcat`
+
+`ft_strchr`
+
+`ft_strrchr`
+
+`ft_strncmp`
+
+`ft_strnstr`
+
+`ft_strdup`
+
+`ft_substr`
+
+`ft_strjoin`
+
+`ft_strtrim`
+
+`ft_split`
+
+`ft_strmapi`
+
+`ft_striteri`
+
+- **Memory functions:**
+
+`ft_memset`
+
+`ft_bzero`
+
+`ft_memcpy`
+
+`ft_memmove`
+
+`ft_memchr`
+
+`ft_memcmp`
+
+`ft_calloc`
 
 - **Character conversion:** 
-  `ft_toupper`, `ft_tolower`
+
+`ft_toupper`
+
+`ft_tolower`
 
 - **Number/string conversion:** 
-  `ft_atoi`, `ft_itoa`
+
+`ft_atoi`
+
+`ft_itoa`
 
 - **File descriptor output functions:** 
-  `ft_putchar_fd`, `ft_putstr_fd`, `ft_putendl_fd`, `ft_putnbr_fd`
+
+`ft_putchar_fd`
+
+`ft_putstr_fd`
+
+`ft_putendl_fd`
+
+`ft_putnbr_fd`
 
