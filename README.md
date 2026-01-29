@@ -85,19 +85,7 @@ isalnum, isascii, isprint), the return value must be:
 
 `ft_strdup`
 
-`ft_substr`
-
-`ft_strjoin`
-
-`ft_strtrim`
-
-`ft_split`
-
-`ft_strmapi`
-
-`ft_striteri`
-
-- **Memory functions:**
+- **Memory manipulation:**
 
 `ft_memset`
 
@@ -122,16 +110,4 @@ isalnum, isascii, isprint), the return value must be:
 - **Number/string conversion:** 
 
 `ft_atoi`
-
-`ft_itoa`
-
-- **File descriptor output functions:** 
-
-`ft_putchar_fd`
-
-`ft_putstr_fd`
-
-`ft_putendl_fd`
-
-`ft_putnbr_fd`
 
