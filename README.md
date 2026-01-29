@@ -7,6 +7,21 @@ It provides functions for character checks, string manipulation, memory operatio
 
 # Instructions
 
+## Makefile
+
+make        # build the project (default target)
+make all    # same as make (if defined)
+make clean  # remove object files (*.o)
+make fclean # remove object files + executable
+make re     # fclean + all (full rebuild)
+
+.PHONY: all clean fclean re
+.PHONY is a special directive for Make. It says:
+"Make these target names as dummy names, not files."
+This is  important,cause Make usually thinks a target is a file.
+For example, if we have a file called clean in a folder and we type make clean, Make might think:
+"The file clean already exists, so there's nothing to do."
+
 ## Compilation
 1. Navigate to the library folder and build the library:
 
@@ -28,6 +43,7 @@ The Makefile here will link main.o with ` ../my_libft/libft.a `.
 The `libft` library includes:
 
 - **Character checks:** 
+
 `ft_isalpha` - [isalpha()](https://www.programiz.com/c-programming/library-function/ctype.h/isalpha)
 
 `ft_isdigit` - [isdigit()](https://www.programiz.com/c-programming/library-function/ctype.h/isdigit)
