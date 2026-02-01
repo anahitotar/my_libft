@@ -47,6 +47,11 @@ This will compile all .c files and create the static library ` libft.a `.
 
 The Makefile here will link main.o with ` ../my_libft/libft.a `.
 
+# Usages
+When implementing functions, the ` man ` command in the terminal is often helpful.
+
+The links listed below also helped during the work.
+
 # Library Overview
 The `libft` library includes:
 
@@ -54,7 +59,9 @@ The `libft` library includes:
 
 For the character classification functions (isalpha, isdigit,
 isalnum, isascii, isprint), the return value must be:
+
 • 1 if the character matches the tested class
+
 • 0 if the character does not match
 
 `ft_isalpha` - [isalpha()](https://www.programiz.com/c-programming/library-function/ctype.h/isalpha)
@@ -103,9 +110,9 @@ isalnum, isascii, isprint), the return value must be:
 
 - **Character conversion:** 
 
-`ft_toupper`
+`ft_toupper` - [toupper()](https://www.geeksforgeeks.org/c/toupper-function-in-c/)
 
-`ft_tolower`
+`ft_tolower` 
 
 - **Number/string conversion:** 
 
