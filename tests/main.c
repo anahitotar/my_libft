@@ -15,6 +15,7 @@
 #include "../libft.h"
 #include <string.h>
 #include <unistd.h>
+#include <strings.h>
 
 void	test_isalpha(void)
 {
@@ -270,6 +271,16 @@ void	test_strlcat(void)
 	printf("%s\t\t:\t%zu\t:\t%zu\t\t:\t%zu\t\t:\t%s\t:\t%s\n", src, size, strlcat(dst_real, src, size), ft_strlcat(dst_ft, src, size), dst_real, dst_ft);
 }
 
+void	test_memset(void)
+{
+
+}
+
+void	test_bzero(void)
+{
+
+}
+
 int main()
 {
 	printf(    "=========== PART 1 ============\n");
@@ -283,4 +294,9 @@ int main()
 	test_strlen();
 	test_strlcpy();
 	test_strlcat();
+	
+
+
+	test_memset();
+	test_bzero();
 }

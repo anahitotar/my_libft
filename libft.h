@@ -1,7 +1,7 @@
 #ifndef LIBFT_H
 # define LIBFT_H
 
-#include <stdio.h>
+#include <stddef.h>
 
 int	ft_isalpha(int c);
 int	ft_isdigit(int c);
@@ -15,5 +15,9 @@ int     ft_tolower(int ch);
 size_t  ft_strlen(const char *str);
 size_t	ft_strlcpy(char *dest,const char *src, size_t size);
 size_t	ft_strlcat(char *dest,const char *src, size_t size);
+
+
+void *  memset(void *b, int c, size_t len);
+void	ft_bzero(void *s, size_t  n);
 
 #endif
