@@ -349,6 +349,128 @@ void	test_memcpy(void)
 		printf("Try again: expected \"%s\", got \"%s\".\n", real_d, ft_d);
 }
 
+void	test_strchr(void)
+{
+	printf("\n\n=========== TESTING STRCHR ============\n\n");
+
+	char *str = "Coucou la ville!";
+
+	if (!strcmp(strchr(str, 'C'), ft_strchr(str, 'C')))
+		printf("OK: expected \"%s\", got \"%s\".\n", strchr(str, 'C'), ft_strchr(str, 'C'));
+	else
+		printf("Try again: expected \"%s\", got \"%s\".\n", strchr(str, 'C'), ft_strchr(str, 'C'));
+
+	if (!strcmp(strchr(str, 'u'), ft_strchr(str, 'u')))
+		printf("OK: expected \"%s\", got \"%s\".\n", strchr(str, 'u'), ft_strchr(str, 'u'));
+	else
+		printf("Try again: expected \"%s\", got \"%s\".\n", strchr(str, 'u'), ft_strchr(str, 'u'));
+
+	if (!strcmp(strchr(str, 'v'), ft_strchr(str, 'v')))
+		printf("OK: expected \"%s\", got \"%s\".\n", strchr(str, 'v'), ft_strchr(str, 'v'));
+	else
+		printf("Try again: expected \"%s\", got \"%s\".\n", strchr(str, 'v'), ft_strchr(str, 'v'));
+
+	if (!strcmp(strchr(str, 'l'), ft_strchr(str, 'l')))
+		printf("OK: expected \"%s\", got \"%s\".\n", strchr(str, 'l'), ft_strchr(str, 'l'));
+	else
+		printf("Try again: expected \"%s\", got \"%s\".\n", strchr(str, 'l'), ft_strchr(str, 'l'));
+
+	if (!strcmp(strchr(str, '\0'), ft_strchr(str, '\0')))
+		printf("OK: expected \"%s\", got \"%s\".\n", strchr(str, '\0'), ft_strchr(str, '\0'));
+	else
+		printf("Try again: expected \"%s\", got \"%s\".\n", strchr(str, '\0'), ft_strchr(str, '\0'));
+
+
+	if (strchr(str, 'x') == ft_strchr(str, 'x'))
+		printf("OK: expected \"%s\", got \"%s\".\n", strchr(str, 'x'), ft_strchr(str, 'x'));
+	else
+		printf("Try again: expected \"%s\", got \"%s\".\n", strchr(str, 'x'), ft_strchr(str, 'x'));
+}
+
+void	test_strrchr(void)
+{
+	printf("\n\n=========== TESTING STRRCHR ============\n\n");
+
+	char *strr = "Coucou la ville!";
+
+	if (!strcmp(strrchr(strr, 'C'), ft_strrchr(strr, 'C')))
+		printf("OK: expected \"%s\", got \"%s\".\n", strrchr(strr, 'C'), ft_strrchr(strr, 'C'));
+	else
+		printf("Try again: expected \"%s\", got \"%s\".\n", strrchr(strr, 'C'), ft_strrchr(strr, 'C'));
+
+	if (!strcmp(strrchr(strr, 'u'), ft_strrchr(strr, 'u')))		printf("OK: expected \"%s\", got \"%s\".\n", strrchr(strr, 'u'), ft_strrchr(strr, 'u'));
+	else
+		printf("Try again: expected \"%s\", got \"%s\".\n", strrchr(strr, 'u'), ft_strrchr(strr, 'u'));
+
+	if (!strcmp(strrchr(strr, 'v'), ft_strrchr(strr, 'v')))
+		printf("OK: expected \"%s\", got \"%s\".\n", strrchr(strr, 'v'), ft_strrchr(strr, 'v'));
+	else
+		printf("Try again: expected \"%s\", got \"%s\".\n", strrchr(strr, 'v'), ft_strrchr(strr, 'v'));
+
+	if (!strcmp(strrchr(strr, 'l'), ft_strrchr(strr, 'l')))
+		printf("OK: expected \"%s\", got \"%s\".\n", strrchr(strr, 'l'), ft_strrchr(strr, 'l'));
+	else
+		printf("Try again: expected \"%s\", got \"%s\".\n", strrchr(strr, 'l'), ft_strrchr(strr, 'l'));
+
+	if (!strcmp(strrchr(strr, '\0'), ft_strrchr(strr, '\0')))
+		printf("OK: expected \"%s\", got \"%s\".\n", strrchr(strr, '\0'), ft_strrchr(strr, '\0'));
+	else
+		printf("Try again: expected \"%s\", got \"%s\".\n", strrchr(strr, '\0'), ft_strrchr(strr, '\0'));
+
+
+	if (strrchr(strr, 'x') == ft_strrchr(strr, 'x'))
+		printf("OK: expected \"%s\", got \"%s\".\n", strrchr(strr, 'x'), ft_strrchr(strr, 'x'));
+	else
+		printf("Try again: expected \"%s\", got \"%s\".\n", strrchr(strr, 'x'), ft_strrchr(strr, 'x'));
+}
+
+void	test_strncmp(void)
+{
+	printf("\n\n=========== TESTING STRNCMP ============\n\n");
+	
+	char	s1[50] = "Hello there are 75 days left.";
+	char	s2[50] = "Hello there are 75 days left.";
+	
+	if (strncmp(s1, s2, 20) == ft_strncmp(s1, s2, 20))
+		printf("OK: expected %d, got %d.\n", strncmp(s1, s2, 20), ft_strncmp(s1, s2, 20));
+	else
+		printf("Try again: expected %d, got %d.\n", strncmp(s1, s2, 20), ft_strncmp(s1, s2, 20));
+	
+	if (strncmp(s1, s2, 0) == ft_strncmp(s1, s2, 0))
+		printf("OK: expected %d, got %d.\n", strncmp(s1, s2, 0), ft_strncmp(s1, s2, 0));
+	else
+		printf("Try again: expected %d, got %d.\n", strncmp(s1, s2, 0), ft_strncmp(s1, s2, 0));
+	
+	s2[14] = ' ';
+	if (strncmp(s1, s2, 20) == ft_strncmp(s1, s2, 20))
+		printf("OK: expected %d, got %d.\n", strncmp(s1, s2, 20), ft_strncmp(s1, s2, 20));
+	else
+		printf("Try again: expected %d, got %d.\n", strncmp(s1, s2, 20), ft_strncmp(s1, s2, 20));
+	
+	s2[14] = '~';
+	if (strncmp(s1, s2, 20) == ft_strncmp(s1, s2, 20))
+		printf("OK: expected %d, got %d.\n", strncmp(s1, s2, 20), ft_strncmp(s1, s2, 20));
+	else
+		printf("Try again: expected %d, got %d.\n", strncmp(s1, s2, 20), ft_strncmp(s1, s2, 20));
+	
+	if (strncmp(s1, s2, 9) == ft_strncmp(s1, s2, 9))
+		printf("OK: expected %d, got %d.\n", strncmp(s1, s2, 9), ft_strncmp(s1, s2, 9));
+	else
+		printf("Try again: expected %d, got %d.\n", strncmp(s1, s2, 9), ft_strncmp(s1, s2, 9));
+	
+	strcpy(s2, "");
+	if (strncmp(s1, s2, 20) == ft_strncmp(s1, s2, 20))
+		printf("OK: expected %d, got %d.\n", strncmp(s1, s2, 20), ft_strncmp(s1, s2, 20));
+	else
+		printf("Try again: expected %d, got %d.\n", strncmp(s1, s2, 20), ft_strncmp(s1, s2, 20));
+
+	strcpy(s2, "Hello there are tree days left");
+	if (strncmp(s1, s2, 20) == ft_strncmp(s1, s2, 20))
+		printf("OK: expected %d, got %d.\n", strncmp(s1, s2, 20), ft_strncmp(s1, s2, 20));
+	else
+		printf("Try again: expected %d, got %d.\n", strncmp(s1, s2, 20), ft_strncmp(s1, s2, 20));
+}
+
 int main()
 {
 	printf(    "=========== PART 1 ============\n");
@@ -362,7 +484,9 @@ int main()
 	test_strlen();
 	test_strlcpy();
 	test_strlcat();
-	
+	test_strchr();
+	test_strrchr();
+	test_strncmp();	
 
 	test_memset();
 	test_bzero();
