@@ -22,7 +22,7 @@ void *	ft_memset(void *b, int c, size_t len)
 	while(len != 0)
 	{
 		*temp = ch;
-		temp++;
+		++temp;
 		--len;
 	}
 	return (b);

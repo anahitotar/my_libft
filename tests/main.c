@@ -273,12 +273,80 @@ void	test_strlcat(void)
 
 void	test_memset(void)
 {
+	printf("=========== MEMSET ============\n");
+	unsigned char real[10] = "abcdef";
+	unsigned char ft[10]   = "abcdef";
+	
+	printf("real memset\t:\tft_memset\t:\treal[0]\t\t:\tft[0]\t\t:\tReturn value check\n");
+	printf("%d\t\t:\t%d\t\t:\t%d\t\t:\t%d\t\t:\t\t", *((char *)memset(real, 1, sizeof(real))), *((char *)ft_memset(ft, 1, sizeof(ft))), real[0], ft[0]);
+ 
+   	 if (ft_memset(ft, 1, sizeof(ft)) == ft)
+       		 printf("OK\n");
+   	 else
+       		 printf("FAIL\n");
 
+         printf("%d\t\t:\t%d\t\t:\t%d\t\t:\t%d\t\t:\t\t", *((char *)memset(real, 0, 4)), *((char *)ft_memset(ft, 0, 4)), real[0], ft[0]);
+
+         if (ft_memset(ft, 0, 4) == ft)
+                 printf("OK\n");
+         else
+                 printf("FAIL\n");
+
+	printf("%d\t\t:\t%d\t\t:\t%d\t\t:\t%d\t\t:\t\t", *((char *)memset(real, 300, sizeof(real))), *((char *)ft_memset(ft, 300, sizeof(ft))), real[0], ft[0]);
+
+	if (ft_memset(ft, 300, sizeof(ft)) == ft)
+        	printf("OK\n");
+    	else
+       		printf("FAIL\n");
+	
+
+	printf("%d\t\t:\t%d\t\t:\t%d\t\t:\t%d\t\t:\t\t", *((char *)memset(real, 'o', 5)), *((char *)ft_memset(ft, 'o', 5)), real[0], ft[0]);
+         if (ft_memset(ft, 'o', 5) == ft)
+                 printf("OK\n");
+         else
+                 printf("FAIL\n");	
 }
 
 void	test_bzero(void)
 {
+	printf("=========== BZERO ============\n");
+	char	real[20] = "abcdef";
+	char	ft[20] = "abcdef";
+	bzero(real, 4);
+	ft_bzero(ft, 4);
+	printf("String is \"abcdef\" ,the number of zeroed bytes is 4.\n");
+	int	i;
+	i = 0;
 
+	while (i < 6 && real[i] == ft[i])
+		i++;
+	if (i == 6)
+		printf("OK: expected [%c] [%c] [%c] [%c] [%c] [%c], got [%c] [%c] [%c] [%c] [%c] [%c].\n", real[0], real[1], real[2], real[3], real[4], real[5], ft[0], ft[1], ft[2], ft[3], ft[4], ft[5]);
+
+	else
+		printf("Try again: expected [%c] [%c] [%c] [%c] [%c] [%c], got [%c] [%c] [%c] [%c] [%c] [%c].\n", real[0], real[1], real[2], real[3], real[4], real[5], ft[0], ft[1], ft[2], ft[3], ft[4], ft[5]);
+
+}
+
+void	test_memcpy(void)
+{
+	printf("=========== MEMCPY ============\n");
+
+	char	real_d[20] = "World";
+	char	ft_d[20] = "World";
+
+	if(!strcmp(memcpy(real_d, "source", 3), ft_memcpy(ft_d, "source", 3)))
+		printf("OK: expected \"%s\", got \"%s\".\n", real_d, ft_d);
+	else
+		printf("Try again: expected \"%s\", got \"%s\".\n", real_d, ft_d);
+	if(!strcmp(memcpy(real_d, "123456source", 9), ft_memcpy(ft_d, "123456source", 9)))
+		printf("OK: expected \"%s\", got \"%s\".\n", real_d, ft_d);
+	else
+		printf("Try again: expected \"%s\", got \"%s\".\n", real_d, ft_d);
+	if(!strcmp(memcpy(real_d, "ab23456source", 0), ft_memcpy(ft_d, "ab123456source", 0)))
+		printf("OK: expected \"%s\", got \"%s\".\n", real_d, ft_d);
+	else
+		printf("Try again: expected \"%s\", got \"%s\".\n", real_d, ft_d);
 }
 
 int main()
@@ -296,7 +364,7 @@ int main()
 	test_strlcat();
 	
 
-
 	test_memset();
 	test_bzero();
+	test_memcpy();
 }
