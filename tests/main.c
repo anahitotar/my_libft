@@ -47,7 +47,7 @@ void	test_isalpha(void)
 
 void    test_isdigit(void)
 {
-        printf("========== IS DIGIT ===========\n");
+        printf("\n========== IS DIGIT ===========\n");
         unsigned char   c;
 
         printf("char\t:\tReal\t:\tFT\n");
@@ -69,7 +69,7 @@ void    test_isdigit(void)
 
 void	test_isalnum(void)
 {
-	printf("========== IS DIGIT OR ALPHA ===========\n");
+	printf("\n========== IS DIGIT OR ALPHA ===========\n");
         unsigned char   c;
 
         printf("char\t:\tReal\t:\tFT\n");
@@ -91,7 +91,7 @@ void	test_isalnum(void)
 
 void	test_isascii(void)
 {
-	printf("========== IS ASCII ===========\n");
+	printf("\n========== IS ASCII ===========\n");
 	char   c;
  	
 	printf("char\t:\tReal\t:\tFT\n");
@@ -111,7 +111,7 @@ void	test_isascii(void)
 
 void	test_isprint(void)
 {
-	printf("========== IS PRINTABLE ===========\n");
+	printf("\n========== IS PRINTABLE ===========\n");
 	char   c;
 	printf("char\t:\tReal\t:\tFT\n");
 	c = -4;
@@ -130,7 +130,7 @@ void	test_isprint(void)
 
 void	test_toupper(void)
 {
-	printf("=========== TO UPPER ============\n");
+	printf("\n=========== TO UPPER ============\n");
 	unsigned char	c;
 
 	printf("char\t:\tReal\t:\tFT\n");
@@ -152,7 +152,7 @@ void	test_toupper(void)
 
 void	test_tolower(void)
 {
-	printf("=========== TO LOWER ============\n");
+	printf("\n=========== TO LOWER ============\n");
 	unsigned char	c;
 
 	printf("char\t:\tReal\t:\tFT\n");
@@ -180,7 +180,7 @@ void	ft_putstr(char *s)
 
 void	test_strlen(void)
 {
-	printf("=========== STRLEN ============\n");
+	printf("\n=========== STRLEN ============\n");
 	char * str;	
 
 	printf("string\t\t:\tReal Size\t:\tFT Size\n");
@@ -209,7 +209,7 @@ void	test_strlen(void)
 
 void	test_strlcpy(void)
 {
-	printf("=========== STRLCPY ============\n");
+	printf("\n=========== STRLCPY ============\n");
 
 	char    dst_real[100];
 	char    dst_ft[100];
@@ -241,7 +241,7 @@ void	test_strlcpy(void)
 
 void	test_strlcat(void)
 {
-	printf("=========== STRLCAT ============\n");
+	printf("\n=========== STRLCAT ============\n");
 
 	char	dst_real[100] = "123";
 	char	dst_ft[100] = "123";
@@ -273,7 +273,7 @@ void	test_strlcat(void)
 
 void	test_memset(void)
 {
-	printf("=========== MEMSET ============\n");
+	printf("\n=========== MEMSET ============\n");
 	unsigned char real[10] = "abcdef";
 	unsigned char ft[10]   = "abcdef";
 	
@@ -309,7 +309,7 @@ void	test_memset(void)
 
 void	test_bzero(void)
 {
-	printf("=========== BZERO ============\n");
+	printf("\n=========== BZERO ============\n");
 	char	real[20] = "abcdef";
 	char	ft[20] = "abcdef";
 	bzero(real, 4);
@@ -330,7 +330,7 @@ void	test_bzero(void)
 
 void	test_memcpy(void)
 {
-	printf("=========== MEMCPY ============\n");
+	printf("\n=========== MEMCPY ============\n");
 
 	char	real_d[20] = "World";
 	char	ft_d[20] = "World";
@@ -351,7 +351,7 @@ void	test_memcpy(void)
 
 void	test_strchr(void)
 {
-	printf("\n\n=========== TESTING STRCHR ============\n\n");
+	printf("\n=========== STRCHR ============\n");
 
 	char *str = "Coucou la ville!";
 
@@ -389,7 +389,7 @@ void	test_strchr(void)
 
 void	test_strrchr(void)
 {
-	printf("\n\n=========== TESTING STRRCHR ============\n\n");
+	printf("\n=========== STRRCHR ============\n");
 
 	char *strr = "Coucou la ville!";
 
@@ -398,7 +398,8 @@ void	test_strrchr(void)
 	else
 		printf("Try again: expected \"%s\", got \"%s\".\n", strrchr(strr, 'C'), ft_strrchr(strr, 'C'));
 
-	if (!strcmp(strrchr(strr, 'u'), ft_strrchr(strr, 'u')))		printf("OK: expected \"%s\", got \"%s\".\n", strrchr(strr, 'u'), ft_strrchr(strr, 'u'));
+	if (!strcmp(strrchr(strr, 'u'), ft_strrchr(strr, 'u')))
+		printf("OK: expected \"%s\", got \"%s\".\n", strrchr(strr, 'u'), ft_strrchr(strr, 'u'));
 	else
 		printf("Try again: expected \"%s\", got \"%s\".\n", strrchr(strr, 'u'), ft_strrchr(strr, 'u'));
 
@@ -426,7 +427,7 @@ void	test_strrchr(void)
 
 void	test_strncmp(void)
 {
-	printf("\n\n=========== TESTING STRNCMP ============\n\n");
+	printf("\n=========== STRNCMP ============\n");
 	
 	char	s1[50] = "Hello there are 75 days left.";
 	char	s2[50] = "Hello there are 75 days left.";
@@ -471,9 +472,159 @@ void	test_strncmp(void)
 		printf("Try again: expected %d, got %d.\n", strncmp(s1, s2, 20), ft_strncmp(s1, s2, 20));
 }
 
+void test_memchr(void)
+{
+    const char arr[] = "Make it work, make it right, make it fast.";
+    printf("\n=========== MEMCHR ============\n");
+    
+    void *r1;
+    void *r2;
+
+    r1 = memchr(arr, 'l', 5);
+    r2 = ft_memchr(arr, 'l', 5);
+    printf("Test 1: %s\n", (r1 == r2) ? "OK" : "FAIL");
+
+    r1 = memchr(arr, 'y', 10);
+    r2 = ft_memchr(arr, 'y', 10);
+    printf("Test 2: %s\n", (r1 == r2) ? "OK" : "FAIL");
+
+    r1 = memchr(arr, 'y', 2);
+    r2 = ft_memchr(arr, 'y', 2);
+    printf("Test 3: %s\n", (r1 == r2) ? "OK" : "FAIL");
+
+    r1 = memchr(arr, 'y', 0);
+    r2 = ft_memchr(arr, 'y', 0);
+    printf("Test 4: %s\n", (r1 == r2) ? "OK" : "FAIL");
+
+    r1 = memchr(arr, 'x', 20);
+    r2 = ft_memchr(arr, 'x', 20);
+    printf("Test 5: %s\n", (r1 == r2) ? "OK" : "FAIL");
+
+    r1 = memchr(arr, '\0', strlen(arr) + 1);
+    r2 = ft_memchr(arr, '\0', strlen(arr) + 1);
+    printf("Test 6: %s\n", (r1 == r2) ? "OK" : "FAIL");
+
+    r1 = memchr(arr, '\0', 20);
+    r2 = ft_memchr(arr, '\0', 20);
+    printf("Test 7: %s\n", (r1 == r2) ? "OK" : "FAIL");
+
+    const unsigned char arr2[] = { '/', '|', 0x12, 0xff, 0x09, 0x42, 0x80, '2', '"', '|', '\\' };
+
+    r1 = memchr(arr2, 0x80, 10);
+    r2 = ft_memchr(arr2, 0x80, 10);
+    printf("Test 8: %s\n", (r1 == r2) ? "OK" : "FAIL");
+}
+
+/*
+It guarantees only the sign of the result:
+< 0 → first memory block is less than the second
+== 0 → memory blocks are equal
+> 0 → first memory block is greater than the second
+*/
+
+int sign(int x)
+{
+    if (x < 0)
+        return (-1);
+    if (x > 0)
+        return (1);
+    return (0);
+}
+
+void test_memcmp(void)
+{
+	printf("\n=========== MEMCMP ============\n");
+
+	int r1;
+	int r2;
+
+	r1 = memcmp("abcdef", "abcdef", 6);
+	r2 = ft_memcmp("abcdef", "abcdef", 6);
+	printf("Test 1: %s\n", sign(r1) == sign(r2) ? "OK" : "FAIL");
+
+	r1 = memcmp("abc", "xbc", 3);
+	r2 = ft_memcmp("abc", "xbc", 3);
+	printf("Test 2: %s\n", sign(r1) == sign(r2) ? "OK" : "FAIL");
+
+	r1 = memcmp("abxdef", "abzdef", 6);
+	r2 = ft_memcmp("abxdef", "abzdef", 6);
+	printf("Test 3: %s\n", sign(r1) == sign(r2) ? "OK" : "FAIL");
+
+	r1 = memcmp("abcde", "abcdx", 5);
+	r2 = ft_memcmp("abcde", "abcdx", 5);
+	printf("Test 4: %s\n", sign(r1) == sign(r2) ? "OK" : "FAIL");
+
+	{
+		char a[] = { 'a', '\0', 'x' };
+		char b[] = { 'a', '\0', 'y' };
+
+		r1 = memcmp(a, b, 3);
+		r2 = ft_memcmp(a, b, 3);
+		printf("Test 5: %s\n", sign(r1) == sign(r2) ? "OK" : "FAIL");
+	}
+
+	r1 = memcmp("abc", "xyz", 0);
+	r2 = ft_memcmp("abc", "xyz", 0);
+	printf("Test 6: %s\n", sign(r1) == sign(r2) ? "OK" : "FAIL");
+
+	{
+		unsigned char a[] = { 0x80, 0x01, 0x02 };
+		unsigned char b[] = { 0x7F, 0x01, 0x02 };
+
+		r1 = memcmp(a, b, 3);
+		r2 = ft_memcmp(a, b, 3);
+		printf("Test 7: %s\n", sign(r1) == sign(r2) ? "OK" : "FAIL");
+	}
+
+	r1 = memcmp("axxxxx", "bxxxxx", 6);
+	r2 = ft_memcmp("axxxxx", "bxxxxx", 6);
+	printf("Test 8: %s\n", sign(r1) == sign(r2) ? "OK" : "FAIL");
+}
+
+void test_strnstr(void)
+{
+    char *r1;
+    char *r2;
+
+	printf("\n=========== STRNSTR ============\n");
+	printf("Test number\t:\thaystack\t:\tneedle\t:\tResult\n");
+
+	r1 = strnstr("hello world", "world", 11);
+	r2 = ft_strnstr("hello world", "world", 11);
+	printf("Test 1\t\t:\thello world\t:\tworld\t:\t%s\n", (r1 == r2) ? "OK" : "FAIL");
+
+	r1 = strnstr("hello world", "world", 5);
+	r2 = ft_strnstr("hello world", "world", 5);
+	printf("Test 2\t\t:\thello world\t:\tworld\t:\t%s\n", (r1 == r2) ? "OK" : "FAIL");
+
+	r1 = strnstr("hello world", "lo", 5);
+	r2 = ft_strnstr("hello world", "lo", 5);
+	printf("Test 3\t\t:\thello world\t:\tworld\t:\t%s\n", (r1 == r2) ? "OK" : "FAIL");
+
+	r1 = strnstr("abcdef", "", 6);
+	r2 = ft_strnstr("abcdef", "", 6);
+	printf("Test 4\t\t:\tabcdef\t\t:\t\"\"\t:\t%s\n", (r1 == r2) ? "OK" : "FAIL");
+
+	r1 = strnstr("", "a", 0);
+	r2 = ft_strnstr("", "a", 0);
+	printf("Test 5\t\t:\t\"\"\t\t:\ta\t:\t%s\n", (r1 == r2) ? "OK" : "FAIL");
+
+	r1 = strnstr("abc", "c", 3);
+	r2 = ft_strnstr("abc", "c", 3);
+	printf("Test 6\t\t:\tabc\t\t:\tc\t:\t%s\n", (r1 == r2) ? "OK" : "FAIL");
+
+	r1 = strnstr("abcabcabc", "abc", 2);
+	r2 = ft_strnstr("abcabcabc", "abc", 2);
+	printf("Test 7\t\t:\tabcabcabc\t:\tabc\t:\t%s\n", (r1 == r2) ? "OK" : "FAIL");
+
+	r1 = strnstr("aaa", "aa", 3);
+	r2 = ft_strnstr("aaa", "aa", 3);
+	printf("Test 8\t\t:\taaa\t\t:\taa\t:\t%s\n", (r1 == r2) ? "OK" : "FAIL");
+}
+
 int main()
 {
-	printf(    "=========== PART 1 ============\n");
+	printf("=========== PART 1 ============\n");
 	test_isalpha();
 	test_isdigit();
 	test_isalnum();
@@ -487,8 +638,10 @@ int main()
 	test_strchr();
 	test_strrchr();
 	test_strncmp();	
-
+	test_strnstr();
 	test_memset();
 	test_bzero();
 	test_memcpy();
+	test_memchr();
+	test_memcmp();
 }
