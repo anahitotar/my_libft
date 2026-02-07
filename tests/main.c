@@ -16,6 +16,7 @@
 #include <string.h>
 #include <unistd.h>
 #include <strings.h>
+#include <stdlib.h>
 
 void	test_isalpha(void)
 {
@@ -622,6 +623,163 @@ void test_strnstr(void)
 	printf("Test 8\t\t:\taaa\t\t:\taa\t:\t%s\n", (r1 == r2) ? "OK" : "FAIL");
 }
 
+void	test_atoi(void)
+{
+	printf("\n=========== ATOI ============\n");
+
+	const char  *tests[] = {
+		"42",
+		"   42",
+		"   -42",
+		"+42",
+		"0042",
+		"42abc",
+		"abc42",
+		"--42",
+		"+-42",
+		"",
+		"   ",
+		"2147483647",
+		"-2147483648",
+		"2147483648",
+		"-2147483649"
+	};
+
+	int i = 0;
+	int r1;
+	int r2;
+
+	while (i < (int)(sizeof(tests) / sizeof(tests[0])))
+	{
+		r1 = atoi(tests[i]);
+		r2 = ft_atoi(tests[i]);
+		printf("Test %d\t:\t\"%s\"\t:\tatoi=%d\t:\tft_atoi=%d\t:\t%s\n",
+			i + 1,
+			tests[i],
+			r1,
+			r2,
+			(r1 == r2) ? "OK" : "FAIL");
+		i++;
+	}
+}
+
+void	test_calloc(void)
+{
+	printf("\n=========== ATOI ============\n");
+
+	int *r1;
+	int *r2;
+	size_t n;
+
+	n = 5;
+	r1 = calloc(n, sizeof(int));
+	r2 = ft_calloc(n, sizeof(int));
+
+	int ok = 1;
+	for (size_t i = 0; i < n; i++)
+	{
+		if (r1[i] != r2[i])
+		{
+			ok = 0;
+			break;
+		}
+	}
+	printf("Test 1: %s\n", ok ? "OK" : "FAIL");
+	free(r1);
+	free(r2);
+	
+	r1 = calloc(0, sizeof(int));
+	r2 = ft_calloc(0, sizeof(int));
+	printf("Test 2: %s\n", (r1 == r2) ? "OK" : "FAIL");
+	if (r1 == NULL)
+		printf("calloc(0, sizeof(int)) returned NULL\n");
+	else
+		printf("calloc(0, sizeof(int)) returned non-NULL pointer %p\n", r1);
+	if (r2 == NULL)
+		printf("ft_calloc(0, sizeof(int)) returned NULL\n");
+	else
+		printf("ft_calloc(0, sizeof(int)) returned non-NULL pointer %p\n", r2);
+
+	free(r1);
+		free(r2);
+
+	n = 100;
+	r1 = calloc(n, sizeof(int));
+	r2 = ft_calloc(n, sizeof(int));
+
+	ok = 1;
+	for (size_t i = 0; i < n; i++)
+	{
+		if (r1[i] != r2[i])
+		{
+			ok = 0;
+			break;
+		}
+	}
+	printf("Test 3: %s\n", ok ? "OK" : "FAIL");
+	free(r1);
+	free(r2);
+}
+
+void test_strdup(void)
+{
+	printf("\n========== STRDUP ===========\n");
+	const char *tests[] = {
+		"Hello, world!",
+		"",
+		"   leading spaces",
+		"trailing spaces   ",
+		"special chars !@#$%^&*()",
+		"1234567890",
+		"a"
+	};
+
+	for (int i = 0; i < (int)(sizeof(tests) / sizeof(tests[0])); ++i)
+	{
+		char *r1;
+		r1 = strdup(tests[i]);
+		char *r2; 
+		r2 = ft_strdup(tests[i]);
+		int ok = 0;
+
+		if (r1 && r2 && strcmp(r1, r2) == 0)
+			ok = 1;
+
+		printf("Test %d:\"%s\" : strdup %s : ft_strdup %s : %s\n\n", i + 1, tests[i], r1 ? r1 : "NULL",r2 ? r2 : "NULL", ok ? "OK" : "FAIL");
+		free(r1);
+		free(r2);
+	}
+}
+
+void test_substr(void)
+{
+        printf("\n========== SUBSTR ===========\n");
+        const char *s[] = {
+                "Hello World",
+		"Hello",
+                ""
+        };
+	char	*sub;
+	sub = ft_substr(s[0], 0, 5);
+	printf("Test 1: s = \"%s\"\t: sub = \"%s\" : start = 0 : len = 5\n", s[0], sub);
+	free(sub);
+	sub = ft_substr(s[0], 6, 5);
+	printf("Test 2: s = \"%s\"\t: sub = \"%s\" : start = 6 : len = 5\n", s[0], sub);
+	free(sub);
+	sub = ft_substr(s[1], 2, 10);
+	printf("Test 3: s = \"%s\"\t\t: sub = \"%s\" : start = 2 : len = 10\n", s[1], sub);
+	free(sub);
+	sub = ft_substr(s[1], 5, 3);
+	printf("Test 4: s = \"%s\"\t\t: sub = \"%s\" : start = 5 : len = 3\n", s[1], sub);
+	free(sub);
+	sub = ft_substr(s[1], 10, 3);
+	printf("Test 5: s = \"%s\"\t\t: sub = \"%s\" : start = 10 : len = 3\n", s[1], sub);
+	free(sub);
+	sub = ft_substr(s[2], 0, 5);
+	printf("Test 6: s = \"%s\"\t\t\t: sub = \"%s\" : start = 0 : len = 5\n", s[2], sub);
+	free(sub);
+}
+
 int main()
 {
 	printf("=========== PART 1 ============\n");
@@ -644,4 +802,10 @@ int main()
 	test_memcpy();
 	test_memchr();
 	test_memcmp();
+	test_atoi();
+	test_calloc();
+	test_strdup();
+	printf("\n=========== PART 2 ============\n");
+	test_substr();
+
 }

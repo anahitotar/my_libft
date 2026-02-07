@@ -91,6 +91,12 @@ isalnum, isascii, isprint), the return value must be:
 `ft_strnstr`
 
 `ft_strdup`
+How strdup() works:
+
+Memory allocation: The function automatically allocates memory for the new string.
+Copying: It copies the contents of the original string (including the null terminator \0) into the newly allocated memory.
+Return pointer: It returns a pointer to the beginning of the copied string.
+Freeing: The calling code is responsible for freeing this memory using free().
 
 - **Memory manipulation:**
 
