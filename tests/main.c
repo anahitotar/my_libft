@@ -780,6 +780,53 @@ void test_substr(void)
 	free(sub);
 }
 
+void	test_strjoin(void)
+{
+	char *result;
+	printf("\n========== STRJOIN ===========\n");
+	result = ft_strjoin("Hello, ", "World!");
+	if (result && strcmp(result, "Hello, World!") == 0)
+		printf("Test 1 :OK\n");
+	else
+		printf("Test 1 :FAIL\n");
+	free(result);
+
+	result = ft_strjoin("", "World!");
+	if (result && strcmp(result, "World!") == 0)
+		printf("Test 2 :OK\n");
+	else
+		printf("Test 2 :FAIL\n");
+	free(result);
+
+	result = ft_strjoin("Hello, ", "");
+	if (result && strcmp(result, "Hello, ") == 0)
+		printf("Test 3 :OK\n");
+	else
+		printf("Test 3 :FAIL\n");
+	free(result);
+
+	result = ft_strjoin("", "");
+	if (result && strcmp(result, "") == 0)
+		printf("Test 4 :OK\n");
+	else
+		printf("Test 4 :FAIL\n");
+	free(result);
+
+	result = ft_strjoin(NULL, "World!");
+	if (result == NULL)
+		printf("Test 5 :OK\n");
+	else
+		printf("Test 5 :FAIL\n");
+	free(result);
+
+	result = ft_strjoin("Hello", NULL);
+	if (result == NULL)
+		printf("Test 6 :OK\n");
+	else
+		printf("Test 6 :FAIL\n");
+	free(result);
+}
+
 int main()
 {
 	printf("=========== PART 1 ============\n");
@@ -807,5 +854,5 @@ int main()
 	test_strdup();
 	printf("\n=========== PART 2 ============\n");
 	test_substr();
-
+	test_strjoin();
 }
