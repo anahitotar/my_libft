@@ -473,6 +473,43 @@ void	test_strncmp(void)
 		printf("Try again: expected %d, got %d.\n", strncmp(s1, s2, 20), ft_strncmp(s1, s2, 20));
 }
 
+void	test_memmove(void)
+{
+	char a1[50];
+	char a2[50];
+
+	printf("\n========== MEMMOVE ==========\n");
+
+	strcpy(a1, "hello world");
+	strcpy(a2, "hello world");
+	printf("Test 1: ft_memmove = %s : memmove = %s \n", (char *)ft_memmove(a1 + 6, "42", 2), (char *)memmove(a2 + 6, "42", 2));
+
+	/* 2. dst > src */
+	strcpy(a1, "abcdef");
+	strcpy(a2, "abcdef");
+	printf("Test 2: ft_memmove = %s : memmove = %s \n", (char *)ft_memmove(a1 + 2, a1, 4), (char *)memmove(a2 + 2, a2, 4));
+
+	/* 3. src > dst */
+	strcpy(a1, "abcdef");
+	strcpy(a2, "abcdef");
+	printf("Test 3: ft_memmove = %s : memmove = %s \n", (char *)ft_memmove(a1, a1 + 2, 4), (char *)memmove(a2, a2 + 2, 4));
+
+	/* 4. len = 0 */
+	strcpy(a1, "abcdef");
+	strcpy(a2, "abcdef");
+	printf("Test 4: ft_memmove = %s : memmove = %s \n", (char *)ft_memmove(a1, "xxxx", 0), (char *)memmove(a2, "xxxx", 0));
+
+	/* 5. dst == src */
+	strcpy(a1, "abcdef");
+	strcpy(a2, "abcdef");
+	printf("Test 5: ft_memmove = %s : memmove = %s \n", (char *)ft_memmove(a1, a1, 3), (char *)memmove(a2, a2, 3));
+
+	/* 6. Full buffer copy */
+	strcpy(a1, "libft_memmove_test");
+	strcpy(a2, "libft_memmove_test");
+	printf("Test 6: ft_memmove = %s : memmove = %s \n", (char *)ft_memmove(a1, a1, strlen(a1) + 1), (char *)memmove(a2, a2, strlen(a2) + 1));
+}
+
 void test_memchr(void)
 {
     const char arr[] = "Make it work, make it right, make it fast.";
@@ -665,7 +702,7 @@ void	test_atoi(void)
 
 void	test_calloc(void)
 {
-	printf("\n=========== ATOI ============\n");
+	printf("\n=========== CALLOC ============\n");
 
 	int *r1;
 	int *r2;
@@ -701,7 +738,7 @@ void	test_calloc(void)
 		printf("ft_calloc(0, sizeof(int)) returned non-NULL pointer %p\n", r2);
 
 	free(r1);
-		free(r2);
+	free(r2);
 
 	n = 100;
 	r1 = calloc(n, sizeof(int));
@@ -719,6 +756,21 @@ void	test_calloc(void)
 	printf("Test 3: %s\n", ok ? "OK" : "FAIL");
 	free(r1);
 	free(r2);
+
+        r1 = calloc(100, 0);
+        r2 = ft_calloc(100, 0);
+	printf("Test 4: %s\n", (r1 == r2) ? "OK" : "FAIL");
+        if (r1 == NULL)
+                printf("calloc(0, sizeof(int)) returned NULL\n");
+        else
+                printf("calloc(0, sizeof(int)) returned non-NULL pointer %p\n", r1);
+        if (r2 == NULL)
+                printf("ft_calloc(0, sizeof(int)) returned NULL\n");
+        else
+                printf("ft_calloc(0, sizeof(int)) returned non-NULL pointer %p\n", r2);
+
+        free(r1);
+        free(r2);
 }
 
 void test_strdup(void)
@@ -827,6 +879,139 @@ void	test_strjoin(void)
 	free(result);
 }
 
+void	test_strtrim(void)
+{
+	printf("\n========== STRTRIM ===========\n");
+	char *trimmed = ft_strtrim("xxabcxx", "xa");
+        printf("s1 = \"xxabcxx\" : set = \"xa\" : output '%s'\n", trimmed);
+        free(trimmed);
+
+        char *empty = ft_strtrim("xxxx", "x");
+        printf("s1 = \"xxxx\" : set = \"x\" : output '%s'\n", empty);
+        free(empty);
+
+        char *no_trim = ft_strtrim("abc", "");
+        printf("s1 = \"abc\" : set = \"\" : output '%s'\n", no_trim);
+        free(no_trim);
+
+	trimmed = ft_strtrim("llohello","elo");
+	printf("s1 = \"llohello\" : set = \"elo\" : output '%s'\n", trimmed);
+        free(trimmed);
+
+	trimmed = ft_strtrim("","o");
+        printf("s1 = \"\" : set = \"o\" : output '%s'\n", trimmed);
+        free(trimmed);
+
+        trimmed = ft_strtrim("","");
+        printf("s1 = \"\" : set = \"\" : output '%s'\n", trimmed);
+        free(trimmed);
+}
+
+static void print_split(char **arr)
+{
+	int i = 0;
+	if (!arr)
+	{
+		printf("NULL\n");
+		return;
+	}
+	while (arr[i])
+	{
+		printf("'%s'\n", arr[i]);
+		i++;
+	}
+	printf("'%s'\n\n", arr[i]);
+}
+
+static void free_split(char **arr)
+{
+	int i = 0;
+	if (!arr)
+		return;
+	while (arr[i])
+		free(arr[i++]);
+	free(arr);
+}
+
+void test_split(void)
+{
+	printf("\n========== SPLIT ===========\n");
+	char **res;
+
+	printf("\nTest 1: s = \"hello world 42\" , c = ' ', split = \n");
+	res = ft_split("hello world 42", ' ');
+	print_split(res);
+	free_split(res);
+
+	printf("\nTest 2: s = \"hello  world   42\" , c = ' ', split = \n");
+	res = ft_split("hello  world   42", ' ');
+	print_split(res);
+	free_split(res);
+
+	printf("\nTest 3: s = \"  hello world  \" , c = ' ', split = \n");
+	res = ft_split("  hello world  ", ' ');
+	print_split(res);
+	free_split(res);
+
+	printf("\nTest 4: s = \"helloworld42\" , c = ' ', split = \n");
+	res = ft_split("helloworld42", ' ');
+	print_split(res);
+	free_split(res);
+
+	printf("\nTest 5: s = \"\" , c = ' ', split = \n");
+	res = ft_split("", ' ');
+	print_split(res);
+	free_split(res);
+
+	printf("\nTest 6: s = \"   \" , c = ' ', split = \n");
+	res = ft_split("   ", ' ');
+	print_split(res);
+	free_split(res);
+
+	printf("\nTest 7: s = NULL , c = ' ', split = \n");
+	res = ft_split(NULL, ' ');
+	print_split(res);
+	free_split(res);
+
+	printf("\nTest 8: s = \"a,b,c,d\" , c = ',', split = \n");
+	res = ft_split("a,b,c,d", ',');
+	print_split(res);
+	free_split(res);
+}
+
+void	test_itoa(void)
+{
+        printf("\n========== ITOA ===========\n");
+	char *res;
+	int n;
+
+	n = -123;
+	res = ft_itoa(n);
+        printf("\nTest 1: n = %d , s = %s\n", n, res);
+        free(res);
+
+	n = 0;
+	res = ft_itoa(n);
+        printf("\nTest 2: n = %d , s = %s\n", n, res);
+	free(res);
+
+        n = -2147483648;
+        res = ft_itoa(n);
+        printf("\nTest 3: n = %d , s = %s\n", n, res);
+        free(res);
+
+        n = 2147483647;
+        res = ft_itoa(n);
+        printf("\nTest 4: n = %d , s = %s\n", n, res);
+        free(res);
+
+        n = 982;
+        res = ft_itoa(n);
+        printf("\nTest 5: n = %d , s = %s\n", n, res);
+        free(res);
+
+}
+
 int main()
 {
 	printf("=========== PART 1 ============\n");
@@ -847,6 +1032,7 @@ int main()
 	test_memset();
 	test_bzero();
 	test_memcpy();
+	test_memmove();
 	test_memchr();
 	test_memcmp();
 	test_atoi();
@@ -855,4 +1041,8 @@ int main()
 	printf("\n=========== PART 2 ============\n");
 	test_substr();
 	test_strjoin();
+	test_strtrim();
+	test_split();
+	test_itoa();
+
 }
