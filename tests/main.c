@@ -17,6 +17,7 @@
 #include <unistd.h>
 #include <strings.h>
 #include <stdlib.h>
+#include <fcntl.h>
 
 void	test_isalpha(void)
 {
@@ -1012,6 +1013,177 @@ void	test_itoa(void)
 
 }
 
+char	add_one_to_even(unsigned int i, char c)
+{
+	if (i % 2 == 0)
+		return (c + 1);
+	return c;
+}
+
+void	test_strmapi(void)
+{
+	printf("\n========== STRMAPI ===========\n");
+	char *new_s;
+	char *s;
+
+	s = "12345";
+	new_s = ft_strmapi(s, add_one_to_even);
+	printf("s = \"%s\"\t:\tnew_s = \"%s\"\n", s, new_s);
+	free(new_s);
+
+	s = "abcdefgh";
+        new_s = ft_strmapi(s, add_one_to_even);
+        printf("s = \"%s\"\t:\tnew_s = \"%s\"\n", s, new_s);
+        free(new_s);
+
+	s = "";
+        new_s = ft_strmapi(s, add_one_to_even);
+        printf("s = \"%s\"\t\t:\tnew_s = \"%s\"\n", s, new_s);
+        free(new_s);
+
+	s = NULL;
+        new_s = ft_strmapi(s, add_one_to_even);
+        printf("s = %s\t:\tnew_s = %s\n", s, new_s);
+        free(new_s);
+
+	s = "hello";
+	new_s = ft_strmapi(s, NULL);
+	printf("s = \"%s\"\t:\tnew_s = %s\n", s, new_s);
+	free(new_s);
+
+	s = "aaaaaa";
+	new_s = ft_strmapi(s, add_one_to_even);
+	printf("s = \"%s\"\t:\tnew_s = \"%s\"\n", s, new_s);
+	free(new_s);
+
+	s = "z";
+	new_s = ft_strmapi(s, add_one_to_even);
+	printf("s = \"%s\"\t\t:\tnew_s = \"%s\"\n", s, new_s);
+	free(new_s);
+
+        char *k = malloc(10001);
+        if (k)
+        {
+            memset(k, 'a', 10000);  // fill with 'a'
+            k[10000] = '\0';
+            char *new_s = ft_strmapi(k, add_one_to_even);
+            printf("Long string of 'a' first 10 chars: new_s = \"%.10s\"\n", new_s);
+            free(new_s);
+            free(k);
+        }
+}
+
+void to_upper(unsigned int i, char *c)
+{
+    if (i % 2 == 0 && *c >= 'a' && *c <= 'z')
+        *c = *c - 32;
+}
+
+void	test_striteri(void)
+{
+	printf("\n========== STRITRIM ===========\n");
+        char s1[] = "12345";
+        printf(" s = \"%s\"\t:\t", s1);
+        ft_striteri(s1, to_upper);
+        printf("new_s = \"%s\"\n", s1);
+
+        char s2[] = "abcdefgh";
+	printf(" s = \"%s\"\t:\t", s2);
+        ft_striteri(s2, to_upper);
+        printf("new_s = \"%s\"\n", s2);
+
+        char s3[] = "";
+        printf(" s = \"%s\"\t\t:\t", s3);
+        ft_striteri(s3, to_upper);
+        printf("new_s = \"%s\"\n", s3);
+
+        char *s4 = NULL;
+        printf(" s = %s\t:\t", s4);
+        ft_striteri(s4, to_upper);
+        printf("new_s = %s\n", s4);
+
+        char s5[] = "hello";
+        printf(" s = \"%s\"\t:\t", s5);
+        ft_striteri(s5, to_upper);
+        printf("new_s = \"%s\"\n", s5);
+        
+	char s6[] = "aaaaaa";
+        printf(" s = \"%s\"\t:\t", s6);
+        ft_striteri(s6, to_upper);
+        printf("new_s = \"%s\"\n", s6);
+
+        char s7[] = "z";
+        printf(" s = \"%s\"\t:\t", s7);
+        ft_striteri(s7, to_upper);
+        printf("new_s = \"%s\"\n", s7);
+
+        char *k = malloc(10001);
+        if (k)
+        {
+            memset(k, 'a', 10000);  // fill with 'a'
+            k[10000] = '\0';
+            printf(" s = \"%.10s\" : ", k);
+	    ft_striteri(k, to_upper);
+            printf("Long string of 'a' first 10 chars: s = \"%.10s\"\n", k);
+            free(k);
+        }
+
+}
+
+void	test_putchar_fd(void)
+{
+	int	fd;
+
+	fd = open("test_putchar_fd.txt", O_WRONLY | O_CREAT | O_TRUNC, 0644);
+	if (fd == -1)
+		perror("open");
+	ft_putchar_fd('a', fd);
+	close(fd);
+}
+
+void	test_putstr_fd(void)
+{
+	int     fd;
+
+        fd = open("test_putstr_fd.txt", O_WRONLY | O_CREAT | O_TRUNC, 0644);
+        if (fd == -1)
+                perror("open");
+        ft_putstr_fd("Hello World!", fd);
+        close(fd);
+}
+
+void	test_putendl_fd(void)
+{
+	int     fd;
+
+        fd = open("test_putendl_fd.txt", O_WRONLY | O_CREAT | O_TRUNC, 0644);
+        if (fd == -1)
+                perror("open");
+        ft_putendl_fd("Hello World!", fd);
+	ft_putendl_fd("1234567890", fd);
+        close(fd);
+}
+
+void	test_putnbr_fd(void)
+{
+	int	fd;
+
+	fd = open("test_putnbr_fd.txt", O_WRONLY | O_CREAT | O_TRUNC, 0644);
+ 	if (fd == -1)
+                perror("open");
+        ft_putnbr_fd(-2147483648, fd);
+	ft_putchar_fd('\n', fd);
+        ft_putnbr_fd(2147483647, fd);
+	ft_putchar_fd('\n', fd);
+        ft_putnbr_fd(0, fd);
+	ft_putchar_fd('\n', fd);
+        ft_putnbr_fd(42, fd);
+	ft_putchar_fd('\n', fd);
+        ft_putnbr_fd(864384, fd);
+	ft_putchar_fd('\n', fd);
+	close(fd);
+}
+
 int main()
 {
 	printf("=========== PART 1 ============\n");
@@ -1044,5 +1216,11 @@ int main()
 	test_strtrim();
 	test_split();
 	test_itoa();
-
+	test_strmapi();
+	test_striteri();
+	test_putchar_fd();
+	test_putstr_fd();
+	test_putendl_fd();
+	test_putnbr_fd();
+	printf("\n Check .txt files ;)\n\n=========== PART 3 ============\n");
 }
