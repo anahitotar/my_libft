@@ -1412,6 +1412,72 @@ void	test_lstclear(void)
        // free(node3);it del in lst_clear
        // free(node1);
 }
+void	f(void *content)
+{
+	printf("%s\n", (char *)content);	
+}
+
+void	test_lstiter(void)
+{
+        printf("\n========== LSTITER ===========\n");
+        t_list *head = NULL;
+
+        char *a = strdup("111");
+        t_list *node1 = ft_lstnew(a);
+        ft_lstadd_front(&head, node1);
+
+        char *b = strdup("222");
+        t_list *node2 = ft_lstnew(b);
+        ft_lstadd_front(&head, node2);
+
+        char *c = strdup("333");
+        t_list *node3 = ft_lstnew(c);
+        ft_lstadd_front(&head, node3);
+
+        printf("List before: ");
+        print_list(head);
+
+	ft_lstiter(head, f);
+
+        ft_lstclear(&head ,del);
+}
+
+void *con_to_upper(void *content)
+{
+    char *str = (char *)content;
+    char *new_str = strdup(str);
+    if (!new_str)
+        return NULL;
+
+    for (int i = 0; new_str[i]; i++)
+        new_str[i] = toupper(new_str[i]);
+    return new_str;
+}
+
+void test_lstmap(void)
+{
+	        printf("\n========== LSTMAP ===========\n");
+    t_list *head = NULL;
+    t_list *new_head;
+
+    // Original list: "one" -> "two" -> "three"
+    ft_lstadd_back(&head, ft_lstnew(strdup("one")));
+    ft_lstadd_back(&head, ft_lstnew(strdup("two")));
+    ft_lstadd_back(&head, ft_lstnew(strdup("three")));
+
+    printf("Original list:\n");
+    print_list(head);
+
+    // Apply ft_lstmap with to_upper
+    new_head = ft_lstmap(head, con_to_upper, del);
+
+    printf("Mapped list (uppercase):\n");
+    print_list(new_head);
+
+    // Free memory
+    ft_lstclear(&head, del);
+    ft_lstclear(&new_head, del);
+}
 
 int main()
 {
@@ -1459,6 +1525,6 @@ int main()
 	test_lstadd_back();
 	test_lstdelone();
 	test_lstclear();
-
-
+	test_lstiter();
+	test_lstmap();
 }
