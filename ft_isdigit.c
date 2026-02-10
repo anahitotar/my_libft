@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aotaryan <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/02/06 18:30:26 by aotaryan          #+#    #+#             */
+/*   Updated: 2026/02/06 18:30:40 by aotaryan         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 /*
 For the character classification functions 
 (isalpha, isdigit, isalnum, isascii, isprint), the return value must be:

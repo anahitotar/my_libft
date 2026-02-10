@@ -1,36 +1,33 @@
-/*
-char *
-     strnstr(const char *haystack, const char *needle, size_t len);
-DESCRIPTION
-     The strnstr() function locates the first occurrence of the null-terminated string needle
-     in the string haystack, where not more than len characters are searched.  Characters that
-     appear after a ‘\0’ character are not searched.  Since the strnstr() function is a
-     FreeBSD specific API, it should only be used when portability is not a concern.
-RETURN VALUES
-     If needle is an empty string, haystack is returned; if needle occurs nowhere in haystack,
-     NULL is returned; otherwise a pointer to the first character of the first occurrence of
-     needle is returned.
-*/
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aotaryan <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/02/06 19:01:37 by aotaryan          #+#    #+#             */
+/*   Updated: 2026/02/06 19:04:30 by aotaryan         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "libft.h"
 
-char *	ft_strnstr(const char *haystack, const char *needle, size_t len)
+char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
 	size_t	i;
 	size_t	j;
 
 	i = 0;
-	if (needle[i] == '\0')
-		return (char *)(haystack);
-	while (i < len && haystack[i])
+	if (little[i] == '\0')
+		return ((char *)(big));
+	while (i < len && big[i])
 	{
 		j = 0;
-		while (i + j < len && haystack[i + j] && haystack[i + j] == needle[j])
+		while (i + j < len && big[i + j] && big[i + j] == little[j])
 			++j;
-
-		if (needle[j] == '\0')
-			return (char *)(haystack + i);
-	++i;
+		if (little[j] == '\0')
+			return ((char *)(big + i));
+		++i;
 	}
 	return (NULL);
 }

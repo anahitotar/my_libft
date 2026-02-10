@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aotaryan <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/02/06 18:28:42 by aotaryan          #+#    #+#             */
+/*   Updated: 2026/02/06 18:29:07 by aotaryan         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 /*
 For the character classification functions 
 (isalpha, isdigit, isalnum, isascii, isprint), the return value must be:

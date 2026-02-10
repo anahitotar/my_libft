@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aotaryan <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/02/10 18:34:50 by aotaryan          #+#    #+#             */
+/*   Updated: 2026/02/10 18:42:55 by aotaryan         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 /*
@@ -22,7 +34,10 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	if (nmemb != 0 && size > (size_t)-1 / nmemb)
 		return (NULL);
 	total = nmemb * size;
-	ptr = malloc(total == 0 ? 1 : total);
+	if (total == 0)
+		ptr = malloc(1);
+	else
+		ptr = malloc(total);
 	if (!ptr)
 		return (NULL);
 	ft_bzero(ptr, total);

@@ -1,18 +1,32 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aotaryan <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/02/10 19:27:25 by aotaryan          #+#    #+#             */
+/*   Updated: 2026/02/10 19:31:03 by aotaryan         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 /*
 	char (*f)(unsigned int, char)
+
 This is a pointer to a function.
 f is not a char, it's a pointer to a function.
 The function it points to takes two parameters:
 unsigned int
 char
 And it returns a char.
-example of usage char *new_str = ft_strmapi("hello", (char func(unsigned int, char)));
+example of usage char *new_str = 
+ft_strmapi("hello", (char func(unsigned int, char)));
 */
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	char	*res;
+	char			*res;
 	unsigned int	i;
 
 	if (!s || !f)

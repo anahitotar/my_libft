@@ -11,7 +11,7 @@ OBJS = $(SRCS:.c=.o)
 all: $(NAME)
 
 $(NAME): $(OBJS) $(LIBFT)
-	$(CC) $(CFLAGS) $(OBJS) -L$(LIBFT_PATH) -lft -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJS) -L$(LIBFT_PATH) -lft -lbsd -o $(NAME)
 
 $(LIBFT):
 	make -C $(LIBFT_PATH)

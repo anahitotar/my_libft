@@ -6,14 +6,14 @@
 /*   By: aotaryan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/08 16:26:12 by aotaryan          #+#    #+#             */
-/*   Updated: 2026/01/26 15:20:38 by aotaryan         ###   ########.fr       */
+/*   Updated: 2026/02/10 20:42:48 by aotaryan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <ctype.h>
 #include "../libft.h"
-#include <string.h>
+#include <bsd/string.h>
 #include <unistd.h>
 #include <strings.h>
 #include <stdlib.h>

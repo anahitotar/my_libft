@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aotaryan <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/02/06 18:25:58 by aotaryan          #+#    #+#             */
+/*   Updated: 2026/02/06 18:26:53 by aotaryan         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 /*
 SYNOPSIS
      #include <strings.h>
@@ -6,9 +18,8 @@ SYNOPSIS
      bzero(void *s, size_t n);
 
 DESCRIPTION
-     The bzero() function writes n zeroed bytes to the string s.  If n is zero, bzero() does nothing.
-
-
+     The bzero() function writes n zeroed bytes to the string s. 
+     If n is zero, bzero() does nothing.
 */
 
 #include "libft.h"
