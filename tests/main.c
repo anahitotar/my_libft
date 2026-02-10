@@ -1184,6 +1184,235 @@ void	test_putnbr_fd(void)
 	close(fd);
 }
 
+void	test_lstnew(void)
+{
+	printf("\n========== LSTNEW ===========\n");
+	int	x = 42;
+	t_list	*node;
+	node = ft_lstnew(&x);
+	if (node)
+	{
+		printf("Test 1:\nNode content: %d\n", *(int *)node->content);
+       		printf("Next pointer: %p\n", node->next);
+	}
+	free(node);
+
+        long     y = 67566664444444542;
+        node = ft_lstnew(&y);
+        if (node)
+        {
+                printf("Test 2:\nNode content: %ld\n", *(long *)node->content);
+                printf("Next pointer: %p\n", node->next);
+        }
+        free(node);
+
+        char     z = 's';
+        node = ft_lstnew(&z);
+        if (node)
+        {
+                printf("Test 3:\nNode content: %c\n", *(char *)node->content);
+                printf("Next pointer: %p\n", node->next);
+        }
+        free(node);
+
+        float	f = 42.42f;
+        node = ft_lstnew(&f);
+        if (node)
+        {
+                printf("Test 4:\nNode content: %f\n", *(float *)node->content);
+                printf("Next pointer: %p\n", node->next);
+        }
+        free(node);
+
+        node = ft_lstnew("Hello 42 students!");
+        if (node)
+        {
+                printf("Test 5:\nNode content: %s\n", (char *)node->content);
+                printf("Next pointer: %p\n", node->next);
+        }
+        free(node);
+}
+
+void print_list(t_list *head)
+{
+    while (head)
+    {
+        printf("%s -> ", (char *)head->content);
+        head = head->next;
+    }
+    printf("NULL\n");
+}
+
+void	test_lstadd_front(void)
+{
+        printf("\n========== LSTADD_FRONT ===========\n");
+	t_list *head = NULL;
+
+    // Test 1: Add first node
+    t_list *node1 = ft_lstnew("first");
+    ft_lstadd_front(&head, node1);
+    printf("After adding node1: ");
+    print_list(head);  // Expected: first -> NULL
+    // Test 2: Add second node
+    t_list *node2 = ft_lstnew("second");
+    ft_lstadd_front(&head, node2);
+    printf("After adding node2: ");
+    print_list(head);  // Expected: second -> first -> NULL
+    // Test 3: Add third node
+    t_list *node3 = ft_lstnew("third");
+    ft_lstadd_front(&head, node3);
+    printf("After adding node3: ");
+    print_list(head);  // Expected: third -> second -> first -> NULL
+    // Test 4: Add NULL (should do nothing)
+    ft_lstadd_front(&head, NULL);
+    printf("After adding NULL: ");
+    print_list(head);  // Expected: third -> second -> first -> NULL	
+	free(node3);
+	free(node2);
+	free(node1);
+}
+
+void    test_lstsize(void)
+{
+        printf("\n========== LSTSIZE ===========\n");
+        t_list *head = NULL;
+
+        t_list *node1 = ft_lstnew("first");
+        ft_lstadd_front(&head, node1);
+
+        t_list *node2 = ft_lstnew("second");
+        ft_lstadd_front(&head, node2);
+
+        t_list *node3 = ft_lstnew("third");
+        ft_lstadd_front(&head, node3);
+	printf("Count of node's in list = %d \n", ft_lstsize(head));
+
+	ft_lstadd_front(&head, NULL);
+	printf("Count of node's in list = %d \n", ft_lstsize(head));
+
+	free(node3);
+        free(node2);
+        free(node1);
+}
+
+void test_lstlast(void)
+{
+        printf("\n========== LSTLAST ===========\n");
+        t_list *head = NULL;
+
+        printf("%p\n", ft_lstlast(head)); //NULL
+	
+        t_list *node1 = ft_lstnew("first");
+        ft_lstadd_front(&head, node1);
+        
+        printf("%s\n", (char *)ft_lstlast(head)->content); // first
+	
+        t_list *node2 = ft_lstnew("second");
+        ft_lstadd_front(&head, node2);
+        
+        printf("%s\n", (char *)ft_lstlast(head)->content); // first
+
+	free(node1);
+	free(node2);
+}
+
+void	test_lstadd_back(void)
+{
+	printf("\n========== LSTADD_BACK ===========\n");
+        t_list *head = NULL;
+
+	t_list *node1 = ft_lstnew("first");
+        ft_lstadd_front(&head, node1);
+
+        t_list *node2 = ft_lstnew("second");
+        ft_lstadd_front(&head, node2);
+        
+        t_list *node3 = ft_lstnew("third");
+        ft_lstadd_front(&head, node3);
+
+	printf("List before: ");
+	print_list(head);
+	t_list *new = ft_lstnew("42");
+	ft_lstadd_back(&head, new);
+	printf("List after: ");
+        print_list(head);
+
+	free(node3);
+        free(node2);
+        free(node1);
+	free(new);
+}
+
+void	del(void *content)
+{
+	free(content);
+}
+
+void	test_lstdelone(void)
+{
+	printf("\n========== LSTDELONE ===========\n");
+        t_list *head = NULL;
+
+	char *a = strdup("111");
+        t_list *node1 = ft_lstnew(a);
+        ft_lstadd_front(&head, node1);
+        
+	char *b = strdup("222");
+	t_list *node2 = ft_lstnew(b);
+        ft_lstadd_front(&head, node2);
+
+	char *c = strdup("333");
+        t_list *node3 = ft_lstnew(c);
+        ft_lstadd_front(&head, node3);
+
+	printf("List before: ");
+        print_list(head);
+         
+        // unlink node2
+        head->next = node2->next;
+
+	ft_lstdelone(node2,del);
+        printf("List after: ");
+        print_list(head);
+
+	free(a);
+//	free(b); in del it deletes
+	free(c);
+	free(node3);
+        free(node1);
+}
+
+void	test_lstclear(void)
+{
+        printf("\n========== LSTCLEAR ===========\n");
+        t_list *head = NULL;
+
+        char *a = strdup("111");
+        t_list *node1 = ft_lstnew(a);
+        ft_lstadd_front(&head, node1);
+
+        char *b = strdup("222");
+        t_list *node2 = ft_lstnew(b);
+        ft_lstadd_front(&head, node2);
+
+        char *c = strdup("333");
+        t_list *node3 = ft_lstnew(c);
+        ft_lstadd_front(&head, node3);
+
+        printf("List before: ");
+        print_list(head);
+         
+        ft_lstclear(&head ,del);
+        printf("List after: ");
+        print_list(head);
+
+	//free(a); in del it deletes
+	//free(b);
+	//free(c);
+       // free(node3);it del in lst_clear
+       // free(node1);
+}
+
 int main()
 {
 	printf("=========== PART 1 ============\n");
@@ -1223,4 +1452,13 @@ int main()
 	test_putendl_fd();
 	test_putnbr_fd();
 	printf("\n Check .txt files ;)\n\n=========== PART 3 ============\n");
+	test_lstnew();
+	test_lstadd_front();
+	test_lstsize();
+	test_lstlast();
+	test_lstadd_back();
+	test_lstdelone();
+	test_lstclear();
+
+
 }

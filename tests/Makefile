@@ -1,6 +1,6 @@
 NAME = test
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g3
 
 LIBFT_PATH = ../
 LIBFT = $(LIBFT_PATH)libft.a
